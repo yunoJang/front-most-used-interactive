@@ -1,0 +1,98 @@
+.pannel {
+    overflow: hidden;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.image-list {
+    display: flex;
+    transition: .4s;
+}
+
+.slider .paging {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+    .slider .paging>li {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+    }
+    .slider .paging>li+li {
+        margin-left: 10px;
+    }
+        .slider .paging>li.focus {
+            background: #333;
+        }
+
+/*slider2 */
+@keyframes right-in{
+    from {
+        opacity: .3;
+        transform: translateX(-90px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes right-out{
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    to {
+        opacity: .3;
+        transform: translateX(90px);
+    }
+}
+
+@keyframes left-in{
+    from {
+        opacity: .3;
+        transform: translateX(90px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes left-out{
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    to {
+        opacity: .3;
+        transform: translateX(-90px);
+    }
+}
+
+.pannel img.right-in {
+    animation: right-in .15s linear
+}
+
+.pannel img.right-out {
+    animation: right-out .15s linear
+}
+
+.pannel img.left-in {
+    animation: left-in .15s linear
+}
+
+.pannel img.left-out {
+    animation: left-out .15s linear
+}

@@ -1,0 +1,32 @@
+html {
+    height: 100vh;
+}
+body {
+    margin: 0;
+    height: 100% ;
+    display: flex;
+    justify-content: center;
+    background: rgb(66, 10, 10);
+}
+
+.slider{
+    display: flex;
+    flex-direction: column;
+}
+    .slider>.container {
+        display: flex;
+        align-items: center;
+    }
+    .slider .pannel {
+        width: 1280px;
+        height: 650px;
+    }
+    .slider button {
+        width: 50px;
+        height: 50px;
+        border: 0;
+        background:#999;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 20px;
+    }
