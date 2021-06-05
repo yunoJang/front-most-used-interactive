@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 60px;
+    background: #333;
+}
+
+main {
+    padding-top: 60px;
+}
+
+.menu-bar {
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    background: #eee;
+}
+
+main>.content {
+    padding: 20px;
+    margin-left: 350px;
+}
+    main>.content.menu-hidden {
+        margin-left: 0px;
+    }
