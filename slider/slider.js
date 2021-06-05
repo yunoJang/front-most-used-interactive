@@ -5,28 +5,30 @@ const paging = document.querySelector('.slider .paging');
     
 const pannelStyle = window.getComputedStyle(pannel);
 
+const IMG_COUNT = 8;
+
 const FOCUS_CN ='focus';
 const DIRECTION_CN = ['left-in','left-out','right-in','right-out'];
 const LEFT = 0;
 const RIGHT = 2;
 
 let id = 0;
-let images = [];
-let image = null;
+let currentImage = null;
 
 function renderImage(dirction) {
     const HIDE_DIRCTION = dirction+1;
 
-    const newImage = new Image(pannelStyle.width.slice(0,-2),pannelStyle.height.slice(0,-2));
-    newImage.src = images[id].src;
+    const newImage = new Image(pannelStyle.width.slice(0,-2), pannelStyle.height.slice(0,-2));
+    newImage.src = `./images/${id+1}.jpg`;
 
-    image.classList.add(DIRECTION_CN[HIDE_DIRCTION]);
+    currentImage.classList.add(DIRECTION_CN[HIDE_DIRCTION]);
     newImage.classList.add(DIRECTION_CN[dirction]);
 
-    image.addEventListener('animationend', ()=>{
-        image.remove();
+    currentImage.addEventListener('animationend', ()=>{
+        currentImage.remove();
+
         pannel.append(newImage);
-        image = newImage;
+        currentImage = newImage;
     });
 
     newImage.addEventListener('animationend', ()=>{
@@ -51,14 +53,14 @@ function renderSlider(dirction) {
 
 function prevImage() {
     const nextId = id-1;
-    id = nextId < 0 ? images.length-1 : nextId;
+    id = nextId < 0 ? IMG_COUNT-1 : nextId;
 
     renderSlider(LEFT);
 }
 
 function nextImage() {
     const nextId = id+1;
-    id = nextId >= images.length ? 0 : nextId;
+    id = nextId >= IMG_COUNT ? 0 : nextId;
 
     renderSlider(RIGHT);
 }
@@ -70,7 +72,7 @@ function onPagingClick(e) {
 }
 
 function paintPaging() {
-    for(let i=0; i<images.length; i++) {
+    for(let i=0; i<IMG_COUNT; i++) {
         const li = document.createElement('li');
         li.dataset.index = i;
         li.addEventListener('click',onPagingClick)
@@ -82,17 +84,16 @@ function paintPaging() {
 }
 
 function paintImage() {
-    image = new Image(pannelStyle.width.slice(0,-2),pannelStyle.height.slice(0,-2));
-    image.src = images[id].src;
+    currentImage = new Image(pannelStyle.width.slice(0,-2), pannelStyle.height.slice(0,-2));
+    currentImage.src = `./images/${id+1}.jpg`;
 
-    pannel.append(image);
+    pannel.append(currentImage);
 }
 
-export function init(imageDoms=[]) {
-    images = imageDoms;
-
+export function init() {
     paintImage();
     paintPaging();
     next.addEventListener('click', nextImage);
     prev.addEventListener('click', prevImage);
 }
+init();
