@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modal</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <button style="width: 80px; height: 80px;">Modal</button>
+
+    <div class="modal-content" hidden>
+        <header>
+            <h1 class="title">Modal Title</h1>
+        </header>
+        <main>
+            Modal Content
+        </main>
+    </div>
+
+    <div class="greeting-modal" hidden>
+        <header>
+            <h1 class="title">Greeting!!</h1>
+        </header>
+        <main>
+            <div>
+                Hi!<br>
+                This is Modal Template
+            </div>
+        </main>
+    </div>
+
+    <script type="module">
+        import {init as modalInit, float} from './modal.js';
+
+        const button = document.querySelector('body>button');
+        const content = document.querySelector('.modal-content');
+        const greeting = document.querySelector('.greeting-modal');
+
+        let id = 0;
+
+        function onClick() {
+            if(id++ % 2 == 0) {
+                modalInit(content);
+            } else {
+                modalInit(greeting);
+            }
+            
+            float();
+        }   
+
+        function init() {
+            button.addEventListener('click', onClick);
+        }
+        init();
+    </script>
+</body>
+</html>
