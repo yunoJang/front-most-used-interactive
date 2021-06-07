@@ -10,7 +10,7 @@ ul {
 
 .image-list {
     display: flex;
-    transition: .4s;
+    transition: .3s;
 }
 
 .slider .paging {

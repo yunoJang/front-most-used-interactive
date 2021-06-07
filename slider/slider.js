@@ -26,7 +26,6 @@ function renderImage(dirction) {
 
     currentImage.addEventListener('animationend', ()=>{
         currentImage.remove();
-
         pannel.append(newImage);
         currentImage = newImage;
     });
@@ -90,7 +89,18 @@ function paintImage() {
     pannel.append(currentImage);
 }
 
-paintImage();
-paintPaging();
-next.addEventListener('click', nextImage);
-prev.addEventListener('click', prevImage);
+if(pannel) {
+    paintImage();
+}
+
+if (paging) {
+    paintPaging();
+} 
+
+if(next) {
+    next.addEventListener('click', nextImage);
+}
+
+if(prev) {
+    prev.addEventListener('click', prevImage);
+}
