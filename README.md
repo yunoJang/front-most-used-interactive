@@ -1,3 +1,3 @@
-# front-most-used-interactive
+# front-interactive
 
-most-used with js
+interactive with js
